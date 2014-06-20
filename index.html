@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>10</title>
+
+
+    <style type="text/css" media="screen">
+        body{
+            display:table;
+            background-color: #133788;
+            /*height:100%;*/
+            width:100%;
+        }
+        #clock-wrapper {
+            text-align: center;
+        }
+        #clock {
+            display:block;
+            margin-top:100px;
+
+            font-size:256px;
+            color: #881337;
+            font-weight: bold;
+
+            text-shadow:2px -2px 2px #323;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="clock-wrapper"><span id="clock">10</span></p>
+
+    <script>
+        var clock = document.getElementById('clock');
+
+        switch(getRandomInt(0,2)){
+            case(0):
+                var down = true;
+                window.setInterval(function() {
+                    var time = parseInt(clock.innerHTML);
+                    if(time == -10){
+                        down = false;
+                    }
+                    if(time == 10){
+                        down = true;
+                    }
+                    clock.innerHTML = down ? time - 1 : time + 1;
+                    document.title = down ? time - 1 : time + 1;
+                },3000);
+            break;
+            case(1):
+                window.setInterval(function() {
+                    var time = parseInt(clock.innerHTML);
+                    clock.innerHTML = time > 1 ? time -1 : time;
+                    document.title = time > 1 ? time -1 : time;
+                },3000);
+            break;
+            case(2):
+                window.setInterval(function() {
+                    var time = parseInt(clock.innerHTML);
+                    clock.innerHTML = time > 0 ? time -1 : time;
+                    document.title = time > 0 ? time -1 : time;
+                },10000);
+            break;
+        }
+
+        function getRandomInt(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+</body>
+</html>
